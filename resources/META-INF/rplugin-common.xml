@@ -354,6 +354,18 @@ You can find the source code in the following repositories:
         icon="AllIcons.Nodes.Test">
         <add-to-group group-id="ProjectViewPopupMenu" relative-to-action="SynchronizeCurrentFile" anchor="after"/>
       </action>
+      <action
+          id="org.jetbrains.r.actions.RRunMultipleTestsAction"
+          class="org.jetbrains.r.actions.RRunMultipleTestsAction"
+          icon="AllIcons.Nodes.Test">
+        <add-to-group group-id="ProjectViewPopupMenu" relative-to-action="SynchronizeCurrentFile" anchor="after"/>
+      </action>
+      <action
+          id="org.jetbrains.r.actions.RDebugMultipleTestsAction"
+          class="org.jetbrains.r.actions.RDebugMultipleTestsAction"
+          icon="AllIcons.Actions.StartDebugger">
+        <add-to-group group-id="ProjectViewPopupMenu" relative-to-action="org.jetbrains.r.actions.RRunMultipleTestsAction" anchor="after"/>
+      </action>
     </actions>
 
     <extensions defaultExtensionNs="org.jetbrains.plugins.notebooks">
@@ -489,6 +501,8 @@ You can find the source code in the following repositories:
         <editorFactoryListener implementation="org.jetbrains.r.rendering.editor.RMarkdownEditorFactoryListener"
                                order="before org.intellij.datavis.r.inlays.InlaysManager"/>
         <highlightingPassFactory implementation="org.jetbrains.r.hints.RReturnHintPass$Factory"/>
+
+        <codeInsight.lineMarkerProvider language="R" implementationClass="org.jetbrains.r.linemarkerproviders.RunRTestLineMarkerProvider"/>
 
         <!-- Settings -->
         <projectConfigurable groupId="project"
